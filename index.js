@@ -17,7 +17,7 @@ function getGlobalPath() {
     globalPath = defaultPath.win
   }
 
-  return globalPath.filter(path => checkPathExists(path))
+  return globalPath.length === 0 ? [] : globalPath.filter(path => checkPathExists(path))
 }
 
 function checkPathExists(path) {
