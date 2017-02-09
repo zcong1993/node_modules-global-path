@@ -1,10 +1,10 @@
 const path = require('path')
 const userHome = require('user-home')
-const nodeModulesGlobalPath = require('../')
+const getPaths = require('../')
 
 describe.skip('main', () => {
   test('main test', () => {
-    const paths = nodeModulesGlobalPath()
+    const paths = getPaths()
 
     if (!process.platform === 'win32') {
       expect(paths).toEqual([
