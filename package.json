@@ -1,6 +1,6 @@
 {
   "name": "node_modules-global-path",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "get the path where npm and yarn global install modules to",
   "repository": {
     "url": "zcong1993/node_modules-global-path",
@@ -8,7 +8,8 @@
   },
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "libs"
   ],
   "scripts": {
     "test": "jest && npm run lint",
