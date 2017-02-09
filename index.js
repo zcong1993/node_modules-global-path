@@ -1,10 +1,11 @@
 const fs = require('fs')
 const path = require('path')
 let userHome = require('user-home')
+const {isRootUser} = require('./libs/utils')
 
 const platform = process.platform
 
-if (platform === 'linux' && isRootUser(getUid())) {
+if (platform === 'linux' && isRootUser()) {
   userHome = path.resolve('/usr/local/share')
 }
 
@@ -32,18 +33,7 @@ function getGlobalPath() {
 }
 
 function checkPathExists(root) {
-  return fs.existsSync(path.join(root, 'node_modules'))
-}
-
-function getUid() {
-  if (process.platform !== 'win32' && process.getuid) {
-    return process.getuid()
-  }
-  return null
-}
-
-function isRootUser(uid) {
-  return uid === 0
+  return fs.existsSync(path.join(root))
 }
 
 module.exports = getGlobalPath
