@@ -11,8 +11,10 @@ dependencies:
       if [[ ! -e ~/.yarn/bin/yarn ]]; then
         echo "Download and install Yarn."
         curl -o- -L https://yarnpkg.com/install.sh | bash -s
+        yarn --version
       else
         echo "The correct version of Yarn is already installed."
+        yarn --version
       fi
   cache_directories:
     - ~/.yarn
