@@ -18,16 +18,21 @@ function getGlobalPath() {
     ]
   } else {
     globalPath = [
-      path.join(userHome, '.config', 'yarn', 'global'),
-      path.join('/usr/local/lib')
+      path.join(userHome, '.config', 'yarn', 'global')
     ]
+  }
+
+  if (platform === 'darwin') {
+    globalPath.push(path.join('/usr/local/lib'))
+  } else if (platform === 'linux') {
+    globalPath.push(path.join('/usr/lib'))
   }
 
   return globalPath.length === 0 ? [] : globalPath.filter(path => checkPathExists(path))
 }
 
-function checkPathExists(path) {
-  return fs.existsSync(path)
+function checkPathExists(root) {
+  return fs.existsSync(path.join(root, 'node_modules'))
 }
 
 function getUid() {
